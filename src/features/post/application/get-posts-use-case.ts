@@ -7,7 +7,8 @@ import {POST_REPOSITORY} from "../../../core/di/types";
 export class GetPostsUseCase  {
     constructor(@inject(POST_REPOSITORY) private readonly postRepository: PostRepository){}
 
-    getPosts() : Promise<Post[]> {
+    execute(): Promise<Post[]> {
         return this.postRepository.find();
     }
 }
+
