@@ -1,3 +1,3 @@
 export interface FindById<T>{
-    findById(id: number): Promise<T>
+    findById(id: string): Promise<T>
 }

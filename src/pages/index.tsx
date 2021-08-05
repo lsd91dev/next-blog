@@ -20,13 +20,17 @@ export const getStaticProps: GetStaticProps = async() => {
     }
 }
 
+const createMarkup = (rawHTML: string) => {
+    return {__html: rawHTML}
+}
+
 const HomePage : FC<Props> = ({ posts }) => {
 
     return (
         <>
             <h1> This is home </h1>
             <ul>
-                { posts.map( post => <li key={ post.id }> { post.content } </li> )}
+                { posts.map( post => <div dangerouslySetInnerHTML={ createMarkup(post.content)} key={post.id}/> )}
             </ul>
         </>
     )

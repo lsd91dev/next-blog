@@ -3,13 +3,15 @@ import {Post} from "../domain/post";
 import fs from 'fs';
 import path from "path";
 import {injectable} from "tsyringe";
+import MarkdownIt from "markdown-it";
+
 
 @injectable()
 export class PostFsRepository implements PostRepository {
 
     private ROOT_DIRECTORY = path.join(process.cwd(), 'database/posts');
 
-    async findById(id: number): Promise<Post> {
+    async findById(id: string): Promise<Post> {
         const post: Post = {
             id: id,
             title: 'Mock',
@@ -20,19 +22,21 @@ export class PostFsRepository implements PostRepository {
 
     async find(): Promise<Post[]> {
         const fileDirectory = fs.readdirSync(this.ROOT_DIRECTORY);
-        fileDirectory.map( file => {
+        const posts = fileDirectory.map( (file) => {
             const pathFile = path.join(this.ROOT_DIRECTORY, file)
-            const content = fs.readFileSync(pathFile);
-            console.log(content);
-        })
-        const posts_mocked : Post[] = [
-            {
-                id: 0,
-                title: 'mock',
-                content: 'mock',
+            // const id = file.replace(/\.md$/, '')
+            const content = fs.readFileSync(pathFile, 'utf-8');
+            const markdownIt: MarkdownIt = MarkdownIt({
+                html: true
+            })
+            const parsed = markdownIt.render(content);
+            return {
+                id: 'uno',
+                title: 'dos',
+                content: parsed
             }
-        ]
-        return Promise.resolve(posts_mocked);
+        })
+        return Promise.resolve(posts);
     }
 
 }
