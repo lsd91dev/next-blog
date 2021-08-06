@@ -1,15 +1,11 @@
 import {PostRepository} from "../domain/post-repository";
 import {Post} from "../domain/post";
-import fs from 'fs';
-import path from "path";
 import {injectable} from "tsyringe";
-import MarkdownIt from "markdown-it";
+import {FileMarkdownReader} from "../../../core/file-reader/file-markdown-reader";
 
 
 @injectable()
 export class PostFsRepository implements PostRepository {
-
-    private ROOT_DIRECTORY = path.join(process.cwd(), 'database/posts');
 
     async findById(id: string): Promise<Post> {
         const post: Post = {
@@ -21,21 +17,9 @@ export class PostFsRepository implements PostRepository {
     }
 
     async find(): Promise<Post[]> {
-        const fileDirectory = fs.readdirSync(this.ROOT_DIRECTORY);
-        const posts = fileDirectory.map( (file) => {
-            const pathFile = path.join(this.ROOT_DIRECTORY, file)
-            // const id = file.replace(/\.md$/, '')
-            const content = fs.readFileSync(pathFile, 'utf-8');
-            const markdownIt: MarkdownIt = MarkdownIt({
-                html: true
-            })
-            const parsed = markdownIt.render(content);
-            return {
-                id: 'uno',
-                title: 'dos',
-                content: parsed
-            }
-        })
+        const fileMarkdownReader = new FileMarkdownReader();
+        fileMarkdownReader.setFilesDirectoryAndRead('database/posts');
+        const posts = fileMarkdownReader.read();
         return Promise.resolve(posts);
     }
 
