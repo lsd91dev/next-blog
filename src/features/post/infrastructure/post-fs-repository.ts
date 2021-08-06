@@ -1,12 +1,13 @@
 import {PostRepository} from "../domain/post-repository";
 import {Post} from "../domain/post";
 import {injectable} from "tsyringe";
-import {FileMarkdownReader} from "../../../core/file-reader/file-markdown-reader";
+import {FileReader} from "../../../core/file-reader/file-reader";
 
 
 @injectable()
 export class PostFsRepository implements PostRepository {
 
+    constructor(private readonly fileReader: FileReader){}
     async findById(id: string): Promise<Post> {
         const post: Post = {
             id: id,
@@ -17,9 +18,7 @@ export class PostFsRepository implements PostRepository {
     }
 
     async find(): Promise<Post[]> {
-        const fileMarkdownReader = new FileMarkdownReader();
-        fileMarkdownReader.setFilesDirectoryAndRead('database/posts');
-        const posts = fileMarkdownReader.read();
+        const posts = this.fileReader.readDirectory('database/posts');
         return Promise.resolve(posts);
     }
 
