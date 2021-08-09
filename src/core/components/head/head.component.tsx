@@ -1,11 +1,17 @@
-import { ReactElement } from "react";
+import {FC, ReactElement} from "react";
 import Head from 'next/head';
 
-export const HeadComponent = (): ReactElement => {
+
+interface Props {
+    title: string,
+    content: string,
+}
+
+export const HeadComponent: FC<Props> = ({ title, content }) : ReactElement => {
     return (
         <Head>
-            <title>Next Blog</title>
-            <meta name="description" content="Created by a junior to everyone. A blog to share how step by step I learn and improve. Enjoy! "/>
+            <title>{ title }</title>
+            <meta name="description" content={ content }/>
             <meta name="google" content="notranslate"/>
             <meta httpEquiv="content-type" content="text/html;charset=utf-8" />
         </Head>

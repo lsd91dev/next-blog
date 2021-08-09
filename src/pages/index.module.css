@@ -1,0 +1,9 @@
+.wrapper {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    grid-template-rows: 8em 1fr 1fr;
+    grid-template-areas:
+    "header header header"
+    "left main right"
+    "left main right";
+}

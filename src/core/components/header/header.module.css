@@ -1,0 +1,29 @@
+
+.header {
+    grid-area: header;
+}
+
+.form {
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+}
+
+.form * {
+    width: 50%;
+}
+
+.form label {
+    order: 1;
+    position: absolute;
+    top: 50px;
+    pointer-events: none;
+}
+
+.form input {
+    order: 0;
+    border-width: 0 0 1px 0;
+}
