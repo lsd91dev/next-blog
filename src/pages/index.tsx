@@ -6,7 +6,7 @@ import {POST_REPOSITORY} from "../core/di/types";
 import {PostFsRepository} from "../features/post/infrastructure/post-fs-repository";
 import {register, resolve} from "../core/di/container-di";
 import {HTMLToReact} from "../features/post/delivery/post-parser";
-import Head from 'next/head'
+import {HeadComponent} from "../core/components/head/head.component";
 
 export interface Props {
     posts: Post[]
@@ -26,14 +26,9 @@ const HomePage : FC<Props> = ({ posts }) => {
 
     return (
         <>
-            <Head>
-                <title> Next Blog</title>
-                <meta name="description" content="Created by a junior to everyone. A blog to share how step by step I learn and improve. Enjoy! "/>
-                <meta name="google" content="notranslate"/>
-                <meta httpEquiv="content-type" content="text/html;charset=utf-8" />
-            </Head>
+            <HeadComponent />
             <h1> This is home </h1>
-                { posts.map( post => <div key={post.id}> { HTMLToReact(post.content) }</div> )}
+                { posts.map( post => <div key={ post.id } className="post"> { HTMLToReact(post.content) }</div> )}
         </>
     )
 }
