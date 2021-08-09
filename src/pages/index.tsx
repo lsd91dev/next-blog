@@ -5,7 +5,7 @@ import {GetPostsUseCase} from "../features/post/application/get-posts-use-case";
 import {POST_REPOSITORY} from "../core/di/types";
 import {PostFsRepository} from "../features/post/infrastructure/post-fs-repository";
 import {register, resolve} from "../core/di/container-di";
-import parse from 'html-react-parser';
+import {HTMLToReact} from "../features/post/delivery/post-parser";
 
 export interface Props {
     posts: Post[]
@@ -19,10 +19,6 @@ export const getStaticProps: GetStaticProps = async() => {
             posts,
         },
     }
-}
-
-const HTMLToReact = (html: string) => {
-    return parse(html);
 }
 
 const HomePage : FC<Props> = ({ posts }) => {
