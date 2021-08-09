@@ -1,10 +1,10 @@
 import path from "path";
 import fs from "fs";
 import { Post } from "../../features/post/domain/post";
-import { PostModel } from "../../features/post/model/post";
 import { singleton } from "tsyringe";
 import { Markdown } from "./markdown";
-import {extractId} from "../id/extract-id";
+import { extractId } from "../id/extract-id";
+import {PostJSON} from "../../features/post/domain/post-json";
 
 @singleton()
 export class FileReader {
@@ -18,10 +18,10 @@ export class FileReader {
         this.FILES_ROOT_DIRECTORY = fs.readdirSync(this.ROOT_DIRECTORY);
         return this.FILES_ROOT_DIRECTORY.map( (fileName) => {
             // TODO better refactor
-            const id = extractId(fileName);
-            const content = this.readFile(fileName)
-            const parsed = this.file.render(content);
-            return PostModel.create(id,id,parsed)
+            const id: string = extractId(fileName);
+            const content: string = this.readFile(fileName)
+            const parsed: string = this.file.render(content);
+            return PostJSON.create(id, id, parsed);
         })
     }
 
@@ -33,6 +33,5 @@ export class FileReader {
         const fullPath = path.join(pathFile, fileName);
         return fs.readFileSync(fullPath, 'utf-8');
     }
-
 
 }
