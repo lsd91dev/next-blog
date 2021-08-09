@@ -4,22 +4,24 @@ import { Post } from "../../features/post/domain/post";
 import { PostModel } from "../../features/post/model/post";
 import { singleton } from "tsyringe";
 import { Markdown } from "./markdown";
+import {extractId} from "../id/extract-id";
 
 @singleton()
 export class FileReader {
 
-    constructor(private readonly markdown: Markdown){}
+    constructor(private readonly file: Markdown){ }
     private ROOT_DIRECTORY: string = '';
     private FILES_ROOT_DIRECTORY: string[] = [];
 
     readDirectory(pathFiles: string): Post[] {
         this.ROOT_DIRECTORY = path.join(process.cwd(), pathFiles);
         this.FILES_ROOT_DIRECTORY = fs.readdirSync(this.ROOT_DIRECTORY);
-        return this.FILES_ROOT_DIRECTORY.map( (file) => {
-            // const id = render.replace(/\.md$/, '')
-            const content = this.readFile(file)
-            const parsed = this.markdown.render(content);
-            return PostModel.create('1','2',parsed)
+        return this.FILES_ROOT_DIRECTORY.map( (fileName) => {
+            // TODO better refactor
+            const id = extractId(fileName);
+            const content = this.readFile(fileName)
+            const parsed = this.file.render(content);
+            return PostModel.create(id,id,parsed)
         })
     }
 
