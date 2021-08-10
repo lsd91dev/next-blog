@@ -29,10 +29,11 @@
 .title {
     grid-area: title;
     padding-left: var(--s);
+    cursor: pointer;
 }
 
 
-@media (max-width: 1050px){
+@media (max-width: 1160px){
 
     .main {
        grid-template-columns: 1fr;

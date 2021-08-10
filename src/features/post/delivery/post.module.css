@@ -7,8 +7,14 @@
 }
 
 .post > *  {
-    padding-left: var(--s);
+    padding-top: var(--xs);
+    padding-left: var(--xs);
 }
+
+.post a:first-of-type{
+    font-size: 24px;
+}
+
 .image {
     position:relative;
     flex: 0 0 var(--wh-m);
@@ -18,7 +24,7 @@
     text-transform: capitalize;
 }
 
-@media (max-width: 1050px){}
+@media (max-width: 1160px){}
 
 @media(max-width: 920px){}
 

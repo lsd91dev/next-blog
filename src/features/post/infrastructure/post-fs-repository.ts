@@ -9,16 +9,12 @@ export class PostFsRepository implements PostRepository {
 
     constructor(private readonly fileReader: FileReader){}
     async findById(id: string): Promise<Post> {
-        const post: Post = {
-            id: id,
-            title: 'Mock',
-            content: 'Mocking'
-        }
-        return Promise.resolve(post);
+        const postFile = this.fileReader.readFile(id+'.md','database/post');// TODO REFACTOR
+        return Promise.resolve(postFile);
     }
 
     async find(): Promise<Post[]> {
-        const posts = this.fileReader.readDirectory('database/posts');
+        const posts = this.fileReader.readDirectory('database/post');
         return Promise.resolve(posts);
     }
 
