@@ -1,9 +1,33 @@
 .wrapper {
     display: grid;
-    grid-template-columns: 1fr 1fr 1fr;
-    grid-template-rows: 8em 1fr 1fr;
+    grid-template-columns: 1fr 2.4fr 0.8fr;
+    grid-template-rows: 8rem 1fr 1fr;
     grid-template-areas:
     "header header header"
     "left main right"
     "left main right";
+    gap: 1rem 3rem;
 }
+
+.main {
+    display: grid;
+    grid-area: main;
+    grid-template-columns: repeat(2, 1fr);
+    grid-template-areas: "title title"
+                         "post post";
+    grid-template-rows: 4rem 1fr;
+}
+
+
+.post {
+    display: grid;
+    grid-area: post;
+    grid-template-columns: repeat(2, 1fr);
+    padding: 1rem;
+}
+
+.title {
+    grid-area: title;
+    padding-left: 1rem;
+}
+

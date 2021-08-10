@@ -1,3 +1,7 @@
 .post{
-    background-color: red;
+
+}
+
+.title {
+    text-transform: capitalize;
 }

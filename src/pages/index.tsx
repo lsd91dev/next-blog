@@ -9,6 +9,7 @@ import {HeadComponent} from "../core/components/head/head.component";
 import {PostComponent} from "../features/post/delivery/post.component";
 import styles from './index.module.css';
 import {HeaderComponent} from "../core/components/header/header.component";
+import {CardProfileComponent} from "../features/card-profile/delivery/card-profile.component";
 
 interface Props {
     posts: Post[]
@@ -37,8 +38,13 @@ const HomePage : FC<Props> = ({ posts }) => {
             <HeadComponent {...HeadType}/>
             <div className={ styles.wrapper }>
                 <HeaderComponent />
-                <section> Here I present myself :) </section>
-                <section>{ posts.map( (post: Post) => <PostComponent {...post} key={ post.id } />)}</section>
+                <CardProfileComponent />
+                <section className={ styles.main }>
+                    <h3 className={ styles.title }> Recent posts </h3>
+                    <section className={ styles.post }>
+                        { posts.map( (post: Post) => <PostComponent {...post} key={ post.id } />)}
+                    </section>
+                </section>
                 <section> This is the sidebar </section>
             </div>
         </>
