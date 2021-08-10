@@ -1,7 +1,25 @@
 .post{
+    display:flex;
+    flex-direction: column;
+    height:450px;
+    border-radius: 5px;
+    box-shadow: rgba(0, 0, 0, 0.1) 0 10px 15px -3px, rgba(0, 0, 0, 0.05) 0 4px 6px -2px;
+}
 
+.post > *  {
+    padding-left: var(--s);
+}
+.image {
+    position:relative;
+    flex: 0 0 var(--wh-m);
 }
 
 .title {
     text-transform: capitalize;
 }
+
+@media (max-width: 1050px){}
+
+@media(max-width: 920px){}
+
+@media(max-width: 725px){}

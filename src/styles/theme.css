@@ -10,13 +10,14 @@
 
     /* Width and Height percentage */
 
-    --width-s: 25%;
-    --width-m: 50%;
-    --width-l: 75%;
-    --width-xl: 100%;
+    --wh-s: 25%;
+    --wh-m: 50%;
+    --wh-l: 75%;
+    --wh-xl: 100%;
 
 
     /* Font */
 
     --line-height-m: 1.6;
+
 }

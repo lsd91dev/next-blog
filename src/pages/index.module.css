@@ -1,11 +1,10 @@
 .wrapper {
     display: grid;
     grid-template-columns: 1fr 2.4fr 0.8fr;
-    grid-template-rows: var(--xxl) 1fr 1fr;
+    grid-template-rows: var(--xxl) 1fr;
     grid-template-areas:
     "header header header"
-    "left main right"
-    "left main right";
+    "profile main sidebar";
     gap: var(--s) var(--m);
 }
 
@@ -16,6 +15,7 @@
     grid-template-areas: "title title"
                          "post post";
     grid-template-rows: var(--l) 1fr;
+    margin-bottom: var(--s);
 }
 
 
@@ -23,7 +23,7 @@
     display: grid;
     grid-area: post;
     grid-template-columns: repeat(2, 1fr);
-    padding: var(--s);
+    gap: var(--s);
 }
 
 .title {
@@ -31,3 +31,16 @@
     padding-left: var(--s);
 }
 
+
+@media (max-width: 1050px){
+
+    .main {
+       grid-template-columns: 1fr;
+        grid-template-areas: "title"
+                             "post";
+    }
+
+    .post {
+        grid-template-columns: 1fr;
+    }
+}
