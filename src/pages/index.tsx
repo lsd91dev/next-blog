@@ -15,7 +15,7 @@ interface Props {
     posts: Post[]
 }
 
-const HeadType = {
+const headMetaContent = {
     title: "Next Blog",
     content: "Created by a junior to everyone. A blog to share how step by step I learn and improve. Enjoy!"
 }
@@ -35,7 +35,7 @@ const HomePage : FC<Props> = ({ posts }) => {
 
     return (
         <>
-            <HeadComponent {...HeadType}/>
+            <HeadComponent {...headMetaContent } />
             <div className={ styles.wrapper }>
                 <HeaderComponent />
                 <CardProfileComponent />

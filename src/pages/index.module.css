@@ -1,12 +1,12 @@
 .wrapper {
     display: grid;
     grid-template-columns: 1fr 2.4fr 0.8fr;
-    grid-template-rows: 8rem 1fr 1fr;
+    grid-template-rows: var(--xxl) 1fr 1fr;
     grid-template-areas:
     "header header header"
     "left main right"
     "left main right";
-    gap: 1rem 3rem;
+    gap: var(--s) var(--m);
 }
 
 .main {
@@ -15,7 +15,7 @@
     grid-template-columns: repeat(2, 1fr);
     grid-template-areas: "title title"
                          "post post";
-    grid-template-rows: 4rem 1fr;
+    grid-template-rows: var(--l) 1fr;
 }
 
 
@@ -23,11 +23,11 @@
     display: grid;
     grid-area: post;
     grid-template-columns: repeat(2, 1fr);
-    padding: 1rem;
+    padding: var(--s);
 }
 
 .title {
     grid-area: title;
-    padding-left: 1rem;
+    padding-left: var(--s);
 }
 
