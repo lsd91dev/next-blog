@@ -20,8 +20,8 @@
     flex: 0 0 var(--wh-m);
 }
 
-.title {
-    text-transform: capitalize;
+.title::first-letter {
+    text-transform: uppercase;
 }
 
 @media (max-width: 1160px){}

@@ -5,7 +5,7 @@ export class PostJSON {
         const post: Readonly<Post> = {
             id,
             title,
-            content
+            content,
         }
         return post
     }

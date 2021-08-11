@@ -8,13 +8,13 @@ import post1 from '../../../../public/imgs/posts/post1.jpeg'
 
 
 
-export const PostComponent: FC<Post> = ({ title, content }) : ReactElement => {
+export const PostComponent: FC<Post> = ({ id, title, content }) : ReactElement => {
     return (
         <article className={ styles.post }>
             <div className={ styles.image }>
                 <Image src={ post1 } objectFit="cover" layout="fill" alt=''/>
             </div>
-            <Link href={`/post/${ encodeURIComponent(title)}`} ><a className={ styles.title }>{ title }</a></Link>
+            <Link href={`/post/${ encodeURIComponent(id)}`} ><a className={ styles.title }>{ title }</a></Link>
             { parseStringToHTML(content) }
         </article>
     )
