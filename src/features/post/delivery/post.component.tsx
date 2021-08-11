@@ -1,5 +1,5 @@
 import {FC, ReactElement} from "react";
-import {HTMLToReact} from "./post-parser";
+import {parseStringToHTML} from "../../../core/html-react-parser/html-react-parser";
 import { Post } from "../domain/post";
 import styles from './post.module.css';
 import Image from 'next/image';
@@ -15,7 +15,7 @@ export const PostComponent: FC<Post> = ({ title, content }) : ReactElement => {
                 <Image src={ post1 } objectFit="cover" layout="fill" alt=''/>
             </div>
             <Link href={`/post/${ encodeURIComponent(title)}`} ><a className={ styles.title }>{ title }</a></Link>
-            { HTMLToReact(content) }
+            { parseStringToHTML(content) }
         </article>
     )
 }

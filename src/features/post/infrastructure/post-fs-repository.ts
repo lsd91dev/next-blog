@@ -9,7 +9,7 @@ export class PostFsRepository implements PostRepository {
 
     constructor(private readonly fileReader: FileReader){}
     async findById(id: string): Promise<Post> {
-        const postFile = this.fileReader.readFile(id+'.md','database/post');// TODO REFACTOR
+        const postFile = this.fileReader.readFile(`${id}.md`,'database/post');// TODO REFACTOR
         return Promise.resolve(postFile);
     }
 
