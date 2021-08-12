@@ -7,5 +7,4 @@ export class Markdown implements Render {
         const markdownIt: MarkdownIt = MarkdownIt({ html: true });
         return markdownIt.render(content)
     }
-
 }
