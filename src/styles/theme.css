@@ -16,7 +16,13 @@
     --wh-xl: 100%;
 
 
-    /* Font */
+    /* Font size */
+
+    --f-m: 18px;
+    --f-l: 24px;
+
+
+    /* Font space */
 
     --line-height-m: 1.6;
 

@@ -39,4 +39,15 @@ export class FileReader {
         }
 
     }
+
+    fileBirthday(){
+        const birthday: Date = fs.statSync('database/post/test.md').birthtime;
+
+        const year = birthday.getFullYear();
+        const month = ( birthday.getMonth() + 1);
+        const day = birthday.getDate();
+
+
+        return `${ year }/ ${ month < 10 ? `0${month}` : month } / ${ day }`;
+    }
 }
