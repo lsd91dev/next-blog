@@ -1,3 +1,4 @@
-export interface Render {
+export interface File {
      render(content: string): string;
+
 }

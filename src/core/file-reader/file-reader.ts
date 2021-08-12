@@ -2,14 +2,12 @@ import path from "path";
 import fs from "fs";
 import { Post } from "../../features/post/domain/post";
 import { singleton } from "tsyringe";
-import { Markdown } from "./markdown";
 import { fileNameFormatted, replaceExtensionByBlank } from "../format-file-name/format-file-name";
 import {PostJSON} from "../../features/post/domain/post-json";
+import {SimpleFileFactory} from "../simple-file-factory/simple-file-factory";
 
 @singleton()
 export class FileReader {
-
-    constructor(private readonly file: Markdown){ }
 
     private FILE_ROOT_DIRECTORY: string = '';
     private FILES_ROOT_DIRECTORY: string[] = [];
@@ -30,9 +28,12 @@ export class FileReader {
         try {
             const fullPath = path.join(pathFile, fileName);
             const content = fs.readFileSync(fullPath, 'utf-8');
+
+            // TODO refactor
             const id: string = replaceExtensionByBlank(fileName);
             const title: string = fileNameFormatted(fileName);
-            const parsed: string = this.file.render(content);
+            const file = SimpleFileFactory.createFile(pathFile);
+            const parsed: string = file.render(content);
             const createdAt: string = this.fileBirthday(pathFile, fileName);
             return PostJSON.create(id, title, parsed, createdAt);
         } catch(error: any) {
@@ -41,6 +42,7 @@ export class FileReader {
 
     }
 
+    // TODO Refactor
     orderByOldDate() {
 
     }
