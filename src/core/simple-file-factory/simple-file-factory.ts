@@ -6,7 +6,7 @@ import {singleton} from "tsyringe";
 export class SimpleFileFactory {
 
     static createFile(fullPath:string): File {
-        const path = SimpleFileFactory.getLastPath(fullPath); // TODO Refactor
+        const path = SimpleFileFactory.getLastPath(fullPath); // TODO Refactor?+
         if(path.includes('md')){
             return new Markdown();
         }else {

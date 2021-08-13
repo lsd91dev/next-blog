@@ -1,6 +1,7 @@
 import "reflect-metadata"
 import {container} from "tsyringe";
 import {FileReader} from "./file-reader";
+import dateFormat from "dateformat";
 
 export {}
 
@@ -17,11 +18,7 @@ describe('file reader', () => {
         const parse = Date.parse("2021/8/12");
         const date = new Date(parse);
 
-        const year = date.getFullYear();
-        let month = ( date.getMonth() + 1);
-        let day = date.getDate();
-
-        let fullDate =  `${ year }/${ month < 10 ? `0${month}` : month }/${ day }`;
+        const fullDate = dateFormat(date, "yyyy/mm/dd");
 
         expect(fullDate).toBe('2021/08/12');
 
@@ -32,11 +29,7 @@ describe('file reader', () => {
         const parse = Date.parse("2021/10/12");
         const date = new Date(parse);
 
-        const year = date.getFullYear();
-        const month = ( date.getMonth() + 1);
-        const day = date.getDate();
-
-        const fullDate = `${ year }/${ month < 10 ? `0${month}` : month }/${ day }`;
+        const fullDate = dateFormat(date, "yyyy/mm/dd");
 
         expect(fullDate).toBe('2021/10/12');
     })
