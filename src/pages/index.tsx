@@ -51,7 +51,7 @@ const HomePage : FC<Props> = ({ posts }) => {
             <div className={ styles.wrapper }>
                 <HeaderComponent searchQuery={ searchQuery } setQuery={ setQuery }/>
                 <CardProfileComponent />
-                <PostSectionComponent posts={ posts } filterPosts={ filterPosts }/>
+                <PostSectionComponent posts={ posts } filterPosts={ filterPosts } query={ query } />
                 <section> This is the sidebar </section>
             </div>
         </>

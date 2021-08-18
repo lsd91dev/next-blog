@@ -5,17 +5,19 @@ import {FC} from "react";
 
 interface Props {
     posts: Post[],
-    filterPosts: Post[]
+    filterPosts: Post[],
+    query: string
 }
 
-export const PostSectionComponent: FC<Props> = ({ posts, filterPosts}) => {
+export const PostSectionComponent: FC<Props> = ({ posts, filterPosts, query}) => {
 
     return (
         <section className={styles.main}>
             <h3 className={styles.title}> Recent posts </h3>
             <section className={styles.post}>
-                {!filterPosts.length ? posts.map((post: Post) => <PostComponent {...post} key={post.id}/>)
-                    : filterPosts.map((post: Post) => <PostComponent {...post} key={post.id}/>)}
+                { (!filterPosts.length || !query.length) ? posts.map((post: Post) => <PostComponent {...post} key={post.id}/>)
+                    : filterPosts.map((post: Post) => <PostComponent {...post} key={post.id}/>)
+                }
             </section>
         </section>
     )

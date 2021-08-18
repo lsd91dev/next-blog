@@ -1,8 +1,13 @@
 import styles from './header.module.css'
-import {ChangeEvent, ReactElement, KeyboardEventHandler} from "react";
+import {ChangeEvent, FC, KeyboardEventHandler} from "react";
 
 
-export const HeaderComponent = ({ searchQuery, setQuery } : { searchQuery: KeyboardEventHandler, setQuery: Function}): ReactElement => {
+interface Props {
+    searchQuery: KeyboardEventHandler,
+    setQuery: Function
+}
+
+export const HeaderComponent: FC<Props> = ({ searchQuery, setQuery }) => {
 
     const changeQuery = (event: ChangeEvent<HTMLInputElement>) => {
         setQuery(event.target.value);
