@@ -7,13 +7,13 @@ import Link from 'next/link';
 import post1 from '../../../../public/imgs/posts/post1.jpeg'
 
 
-
-export const PostComponent: FC<Post> = ({ id, title, content }) : ReactElement => {
+export const PostComponent: FC<Post> = ({ id, title, content, createdAt }) : ReactElement => {
     return (
         <article className={ styles.post }>
             <div className={ styles.image }>
                 <Image src={ post1 } objectFit="cover" layout="fill" alt=''/>
             </div>
+            <small> { createdAt.toDateString() }</small>
             <Link href={`/post/${ encodeURIComponent(id)}`} ><a className={ styles.title }>{ title }</a></Link>
             { parseStringToHTML(content) }
         </article>

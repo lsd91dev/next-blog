@@ -1,7 +1,6 @@
 import {FC} from "react";
 import {Post} from "../features/post/domain/post";
 import {GetStaticProps} from "next";
-import {GetPostsUseCase} from "../features/post/application/get-posts-use-case";
 import {POST_REPOSITORY} from "../core/di/types";
 import {PostFsRepository} from "../features/post/infrastructure/post-fs-repository";
 import {register, resolve} from "../core/di/container-di";
@@ -10,6 +9,7 @@ import {PostComponent} from "../features/post/delivery/post.component";
 import styles from './index.module.css';
 import {HeaderComponent} from "../core/components/header/header.component";
 import {CardProfileComponent} from "../features/card-profile/delivery/card-profile.component";
+import {GetPostsByNewestDateUseCase} from "../features/post/application/get-posts-by-newest-date-use-case";
 
 interface Props {
     posts: Post[]
@@ -22,8 +22,8 @@ const headMetaContent = {
 
 export const getStaticProps: GetStaticProps = async() => {
     register(POST_REPOSITORY, PostFsRepository);
-    const getPostsUseCase = resolve(GetPostsUseCase);
-    const posts: Post[] = await getPostsUseCase.execute();
+    const getPostsByNewestDateUseCase = resolve(GetPostsByNewestDateUseCase);
+    const posts: Post[] = await getPostsByNewestDateUseCase.execute();
     return {
         props: {
             posts,
@@ -43,6 +43,7 @@ const HomePage : FC<Props> = ({ posts }) => {
                     <h3 className={ styles.title }> Recent posts </h3>
                     <section className={ styles.post }>
                         { posts.map( (post: Post) => <PostComponent {...post} key={ post.id } />)}
+
                     </section>
                 </section>
                 <section> This is the sidebar </section>
