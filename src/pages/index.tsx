@@ -1,4 +1,4 @@
-import {FC} from "react";
+import {FC, KeyboardEvent, useState} from "react";
 import {Post} from "../features/post/domain/post";
 import {GetStaticProps} from "next";
 import {POST_REPOSITORY} from "../core/di/types";
@@ -33,17 +33,29 @@ export const getStaticProps: GetStaticProps = async() => {
 
 const HomePage : FC<Props> = ({ posts }) => {
 
+    const [ query, setQuery ] = useState<string>('');
+    const [ filterPosts, setFilterPosts ] = useState<Post[]>([]);
+
+    const searchQuery = (event: KeyboardEvent<HTMLInputElement>) => {
+        const keyboard = event.key;
+        if(keyboard === "Enter"){
+            event.preventDefault();
+            const filtered = posts.filter( post => post.title.includes(query) );
+            setFilterPosts(filtered)
+        }
+    }
+
     return (
         <>
             <HeadComponent {...headMetaContent } />
             <div className={ styles.wrapper }>
-                <HeaderComponent />
+                <HeaderComponent searchQuery={ searchQuery } setQuery={ setQuery }/>
                 <CardProfileComponent />
                 <section className={ styles.main }>
                     <h3 className={ styles.title }> Recent posts </h3>
                     <section className={ styles.post }>
-                        { posts.map( (post: Post) => <PostComponent {...post} key={ post.id } />)}
-
+                        { !filterPosts.length ? posts.map( (post: Post) => <PostComponent {...post} key={ post.id }/>)
+                        : filterPosts.map( (post: Post) => <PostComponent {...post} key= { post.id } />) }
                     </section>
                 </section>
                 <section> This is the sidebar </section>
