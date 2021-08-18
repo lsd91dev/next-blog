@@ -6,6 +6,7 @@ import { Post } from "../../features/post/domain/post";
 import {getParamId} from "../../core/params/get-params";
 import {POST_REPOSITORY} from "../../core/di/types";
 import {PostFsRepository} from "../../features/post/infrastructure/post-fs-repository";
+import {parseStringToHTML} from "../../core/html-react-parser/html-react-parser";
 
 export interface Props {
     post: Post
@@ -25,7 +26,11 @@ export const getServerSideProps: GetServerSideProps<Props> = async({ query}) => 
 
 const PostPage: FC<Props> = ({ post }): ReactElement => {
     return (
-        <h1> { post.title } </h1>
+        <>
+            <h1> { post.title } </h1>
+            <div> { parseStringToHTML(post.content) } </div>
+        </>
+
     )
 }
 

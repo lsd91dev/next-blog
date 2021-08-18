@@ -1,1 +1,0 @@
-![A beautiful building](post2.jpg)
