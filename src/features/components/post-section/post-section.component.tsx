@@ -1,6 +1,6 @@
-import styles from "../../../../pages/index.module.css";
-import {Post} from "../../../post/domain/post";
-import {PostComponent} from "../../../post/delivery/post.component";
+import styles from "../../../pages/index.module.css";
+import {Post} from "../../post/domain/post";
+import {PostComponent} from "../../post/delivery/post.component";
 import {FC} from "react";
 
 interface Props {

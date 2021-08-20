@@ -1,6 +1,6 @@
 import { ReactElement } from "react";
 import Image from 'next/image';
-import avatar from '../../../../../public/imgs/avatar/avatar.jpeg'
+import avatar from '../../../../public/imgs/avatar/avatar.jpeg'
 import styles from './card-profile.module.css'
 
 

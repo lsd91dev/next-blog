@@ -22,7 +22,7 @@ export class PostFactory {
             id: post.id,
             title: post.title,
             content: post.content,
-            createdAt: post.createdAt
+            createdAt: post.createdAt,
         }
     }
 

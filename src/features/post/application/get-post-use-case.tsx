@@ -1,7 +1,7 @@
 import {inject, injectable} from "tsyringe";
 import {POST_REPOSITORY} from "../../../core/di/types";
 import {PostRepository} from "../domain/post-repository";
-import {Post} from "../domain/post-factory";
+import {Post} from "../domain/post";
 
 @injectable()
 export class GetPostUseCase {

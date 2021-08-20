@@ -7,9 +7,9 @@ import {register, resolve} from "../core/di/container-di";
 import {HeadComponent} from "../core/components/head/head.component";
 import styles from './index.module.css';
 import {HeaderComponent} from "../core/components/header/header.component";
-import {CardProfileComponent} from "../features/workspace/ui/card-profile/card-profile.component";
+import {CardProfileComponent} from "../features/components/card-profile/card-profile.component";
 import {GetPostsByNewestDateUseCase} from "../features/post/application/get-posts-by-newest-date-use-case";
-import {PostSectionComponent} from "../features/workspace/ui/post-section/post-section.component";
+import {PostSectionComponent} from "../features/components/post-section/post-section.component";
 
 interface Props {
     posts: Post[]

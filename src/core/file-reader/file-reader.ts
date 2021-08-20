@@ -12,7 +12,6 @@ export class FileReader {
             const file = FileFactory.createFile(pathFile);
             const content = this.getFileContent(fullPath);
             const renderedContent = file.render(content);
-            console.log(renderedContent);
             return renderedContent
         } catch(error: any) {
             throw new Error('File does not exist') // TODO refactor
