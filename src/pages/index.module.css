@@ -12,9 +12,9 @@
     display: grid;
     grid-area: main;
     grid-template-columns: repeat(2, 1fr);
+    grid-template-rows: var(--xxl) 95vh;
     grid-template-areas: "title title"
                          "post post";
-    grid-template-rows: var(--l) 1fr;
     margin-bottom: var(--s);
 }
 
@@ -34,6 +34,14 @@
 
 
 @media (max-width: 1160px){
+
+    .wrapper {
+        grid-template-columns: 1fr 2fr;
+        grid-template-areas:
+            "header header"
+            "profile main";
+        gap: var(--xs) var(--xs);
+    }
 
     .main {
        grid-template-columns: 1fr;

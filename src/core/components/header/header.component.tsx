@@ -16,8 +16,8 @@ export const HeaderComponent: FC<Props> = ({ searchQuery, setQuery }) => {
     return (
         <header className={ styles.header }>
             <form className={ styles.form } onKeyDown={ searchQuery }>
-                <input id="search" onChange={ changeQuery }/>
-                <label htmlFor="search"> Search by title </label>
+                    <input id="search" onChange={ changeQuery }/>
+                    <label htmlFor="search"> Search by title </label>
             </form>
         </header>
     )

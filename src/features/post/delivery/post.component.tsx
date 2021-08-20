@@ -21,7 +21,7 @@ export const PostComponent: FC<Post> = ({id, title, content, createdAt}): ReactE
                 <PostImageComponent fileName={ id }/>
             </div>
             <small> {createdAt.toDateString()}</small>
-            <Link href={`/post/${encodeURIComponent(id)}`}><a className={styles.title}>{title}</a></Link>
+                <Link href={`/post/${encodeURIComponent(id)}`}><a className={styles.link}>{title}</a></Link>
             {parseStringToHTML(content)}
         </article>
     )

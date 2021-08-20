@@ -1,10 +1,14 @@
 
 .header {
     grid-area: header;
+    display:flex;
 }
 
 .form {
     display: flex;
+    flex: 0 0 70%;
+    margin-left: auto;
+    margin-right: var(--xs);
     flex-direction: column;
     height: 100%;
     align-items: center;
@@ -13,7 +17,7 @@
 }
 
 .form * {
-    width: 50%;
+    width: 100%;
 }
 
 .form label {
@@ -26,4 +30,18 @@
 .form input {
     order: 0;
     border-width: 0 0 1px 0;
+}
+
+@media (max-width: 1160px){
+
+    .form {
+        align-items: flex-end;
+        margin-right: var(--xs);
+        flex: 0 0 65%;
+    }
+}
+
+@media(max-width: 920px){}
+
+@media(max-width: 725px){
 }
