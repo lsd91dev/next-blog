@@ -1,0 +1,53 @@
+.post {
+    display: flex;
+    flex-direction: column;
+}
+
+.frame {
+    z-index: 10;
+    display: flex;
+    margin: 0 auto;
+    position: relative;
+    top: -80px;
+}
+
+.frame div:first-child {
+    position: relative;
+    width: 150px;
+    height: 150px;
+}
+
+.frame div:first-child::before {
+    content: '';
+    background:white;
+    position:absolute;
+    inset:0;
+    border-radius:50%;
+    transform:scale(1.1);
+}
+
+
+.avatar {
+    border-radius: 50%;
+}
+
+
+.image {
+    position: relative;
+    flex: 0 0 50vh;
+}
+
+.title {
+    text-align:center;
+}
+
+.title:first-letter {
+    text-transform: uppercase;
+}
+
+.content {
+    padding: var(--l);
+    font-size: var(--f-m);
+    text-align: justify;
+    line-height: 1.6;
+}

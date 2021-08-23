@@ -18,11 +18,13 @@ export const PostComponent: FC<Post> = ({id, title, content, createdAt}): ReactE
     return (
         <article className={styles.post} onClick={ handleClick }>
             <div className={styles.image}>
-                <PostImageComponent fileName={ id }/>
+                <PostImageComponent fileName={ id } />
             </div>
             <small> {createdAt.toDateString()}</small>
                 <Link href={`/post/${encodeURIComponent(id)}`}><a className={styles.link}>{title}</a></Link>
-            {parseStringToHTML(content)}
+            <div className={ styles.content }>
+                { parseStringToHTML(content) }
+            </div>
         </article>
     )
 

@@ -28,6 +28,18 @@
     text-transform: uppercase;
 }
 
+.content {
+    position: relative;
+    overflow: hidden;
+}
+
+.content::after {
+    content: '';
+    background: linear-gradient(0deg, rgba(255,255,255,1) 25%, rgba(255,255,255,0) 100%);
+    position:absolute;
+    inset:0;
+}
+
 
 
 @media (max-width: 1160px){
@@ -43,4 +55,9 @@
 
 @media(max-width: 920px){}
 
-@media(max-width: 725px){}
+@media(max-width: 725px){
+    .post {
+        margin: 0 auto;
+        max-width: 600px;
+    }
+}

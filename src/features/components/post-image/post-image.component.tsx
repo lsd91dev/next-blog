@@ -10,10 +10,10 @@ interface Props {
 export const PostImageComponent: FC<Props> = ({fileName}) => {
 
     const imagePath = (fileName: string) => {
-        return path.join(__dirname, `imgs/posts/${fileName}.jpg`);
+        return path.join(__dirname, `imgs/cover/${fileName}.jpg`);
     }
 
-    return <Image src={ imagePath(fileName) } objectFit="cover" layout="fill" alt=''/>
+    return <Image src={ imagePath(fileName) } objectFit="cover" alt='' layout="fill"/>
 
 
 }

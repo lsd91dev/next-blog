@@ -7,6 +7,11 @@ import {getParamId} from "../../core/params/get-params";
 import {POST_REPOSITORY} from "../../core/di/types";
 import {PostFsRepository} from "../../features/post/infrastructure/post-fs-repository";
 import {parseStringToHTML} from "../../core/html-react-parser/html-react-parser";
+import {PostImageComponent} from "../../features/components/post-image/post-image.component";
+import styles from './[id].module.css';
+import Image from "next/image";
+import avatar from "../../../public/imgs/avatar/avatar.jpeg";
+
 
 export interface Props {
     post: Post
@@ -26,10 +31,21 @@ export const getServerSideProps: GetServerSideProps<Props> = async({ query}) => 
 
 const PostPage: FC<Props> = ({ post }): ReactElement => {
     return (
-        <>
-            <h1> { post.title } </h1>
-            <div> { parseStringToHTML(post.content) } </div>
-        </>
+        <div className={ styles.post }>
+            <div className={ styles.image }>
+                <PostImageComponent fileName={ post.id } />
+            </div>
+            <div className={ styles.frame}>
+                <div>
+                    <Image src={ avatar } alt='' layout="fill" objectFit="cover" className={ styles.avatar}/>
+                </div>
+            </div>
+            <div className={ styles.content}>
+                <h1 className={ styles.title }> { post.title } </h1>
+                <div> { parseStringToHTML(post.content) } </div>
+            </div>
+
+        </div>
 
     )
 }

@@ -1,11 +1,10 @@
 .wrapper {
     display: grid;
-    grid-template-columns: 1fr 2.4fr 0.8fr;
+    grid-template-columns: 0.3fr 1fr;
     grid-template-rows: var(--xxl) 1fr;
     grid-template-areas:
-    "header header header"
-    "profile main sidebar";
-    gap: var(--s) var(--m);
+    "header header"
+    "profile main";
 }
 
 .main {
@@ -15,7 +14,7 @@
     grid-template-rows: var(--xxl) 95vh;
     grid-template-areas: "title title"
                          "post post";
-    margin-bottom: var(--s);
+    margin-right: var(--s);
 }
 
 
@@ -33,13 +32,10 @@
 }
 
 
+
 @media (max-width: 1160px){
 
     .wrapper {
-        grid-template-columns: 1fr 2fr;
-        grid-template-areas:
-            "header header"
-            "profile main";
         gap: var(--xs) var(--xs);
     }
 
@@ -49,7 +45,21 @@
                              "post";
     }
 
+
+    .sidebar {
+        display: none;
+    }
+
     .post {
         grid-template-columns: 1fr;
+    }
+}
+
+@media (max-width: 725px){
+    .wrapper {
+        grid-template-columns: 1fr;
+        grid-template-areas:
+            "header"
+            "main";
     }
 }

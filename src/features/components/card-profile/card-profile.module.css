@@ -33,4 +33,8 @@
     font-size:20px;
 }
 
-@media ( min-width: 1050px){  }
+@media ( max-width: 725px){
+    .profile {
+        display:none;
+    }
+}

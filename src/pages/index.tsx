@@ -52,7 +52,6 @@ const HomePage : FC<Props> = ({ posts }) => {
                 <HeaderComponent searchQuery={ searchQuery } setQuery={ setQuery }/>
                 <CardProfileComponent />
                 <PostSectionComponent posts={ posts } filterPosts={ filterPosts } query={ query } />
-                <section> This is the sidebar </section>
             </div>
         </>
     )
