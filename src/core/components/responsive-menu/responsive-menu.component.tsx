@@ -1,8 +1,14 @@
 import styles from './responsive-menu.module.css'
+import {FC, MouseEventHandler} from "react";
 
-export const ResponsiveMenuComponent = () => {
+interface Props {
+    handleClick: MouseEventHandler;
+}
+
+export const ResponsiveMenuComponent: FC<Props> = ({handleClick}) => {
+
     return (
-        <div className={ styles.menu }>
+        <div className={ styles.menu } onClick={ handleClick }>
             <div className={ styles.center }> </div>
         </div>
     )

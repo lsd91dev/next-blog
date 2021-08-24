@@ -35,6 +35,12 @@ const HomePage : FC<Props> = ({ posts }) => {
 
     const [ query, setQuery ] = useState<string>('');
     const [ filterPosts, setFilterPosts ] = useState<Post[]>([]);
+    const [showProfile, setProfile] = useState<boolean>(false);
+
+    const handleClick = () => {
+        setProfile(!showProfile);
+    }
+
 
     const searchQuery = (event: KeyboardEvent<HTMLInputElement>) => {
         const keyboard = event.key;
@@ -49,8 +55,8 @@ const HomePage : FC<Props> = ({ posts }) => {
         <>
             <HeadComponent {...headMetaContent } />
             <div className={ styles.wrapper }>
-                <HeaderComponent searchQuery={ searchQuery } setQuery={ setQuery }/>
-                <CardProfileComponent />
+                <HeaderComponent searchQuery={ searchQuery } setQuery={ setQuery } handleClick={ handleClick }/>
+                <CardProfileComponent isOpen={ showProfile }/>
                 <PostSectionComponent posts={ posts } filterPosts={ filterPosts } query={ query } />
             </div>
         </>

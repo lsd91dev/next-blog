@@ -34,7 +34,25 @@
 }
 
 @media ( max-width: 725px){
+
     .profile {
-        display:none;
+        transition: ease-in all 500ms ;
+        position:fixed;
+        background: white;
+        inset:0;
+        z-index: 10;
+        transform: translate(-100%, 0);
+    }
+
+    .invisible {
+        transition: none !important;
+    }
+
+    .avatar {
+        margin: 100px 0 0 0;
+    }
+
+    .active{
+        transform: translate(0, 0);
     }
 }

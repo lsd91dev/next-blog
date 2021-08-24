@@ -11,9 +11,10 @@
     display: grid;
     grid-area: main;
     grid-template-columns: repeat(2, 1fr);
-    grid-template-rows: var(--xxl) 95vh;
+    grid-template-rows: var(--xxl) auto;
     grid-template-areas: "title title"
                          "post post";
+    margin-bottom: var(--s);
     margin-right: var(--s);
 }
 
@@ -35,14 +36,15 @@
 
 @media (max-width: 1160px){
 
-    .wrapper {
-        gap: var(--xs) var(--xs);
-    }
-
     .main {
-       grid-template-columns: 1fr;
+        grid-template-columns: 1fr;
         grid-template-areas: "title"
                              "post";
+        margin: 0 auto;
+    }
+
+    .wrapper {
+        gap: var(--xs) var(--xs);
     }
 
 
