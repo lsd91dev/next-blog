@@ -1,9 +1,9 @@
-import {FC, ReactElement, useLayoutEffect, useState} from "react";
+import {FC, ReactElement, useLayoutEffect} from "react";
 import Image from 'next/image';
 import avatar from '../../../../public/imgs/avatar/avatar.jpeg'
 import styles from './card-profile.module.css'
 import index from '../../../pages/index.module.css'
-import menu from "../../../core/components/responsive-menu/responsive-menu.module.css";
+import menuStyle from "../../../core/components/responsive-menu/responsive-menu.module.css";
 
 
 interface Props {
@@ -11,19 +11,18 @@ interface Props {
     setProfile: Function;
 }
 
-export const CardProfileComponent: FC<Props> = ({isOpen, setProfile }): ReactElement => {
-
-    const [screen, setWidthScreen] = useState<number>(0);
-
+export const CardProfileComponent: FC<Props> = ({ isOpen, setProfile }): ReactElement => {
     const listenerResize = () => {
-        setWidthScreen(window.innerWidth);
+        const screen = window.innerWidth;
         const profile = document.getElementsByClassName(styles.profile)[0];
+        const menu = document.getElementsByClassName(menuStyle.menu)[0];
+        const menuCenter = document.getElementsByClassName(menuStyle.center)[0];
         if (screen >= 725) {
             setProfile(false);
             profile.classList.add(styles.invisible);
             document.body.classList.remove(index.overflowHidden);
-            document.getElementsByClassName(menu.center)[0].classList.remove(menu.disappear);
-            document.getElementsByClassName(menu.menu)[0].classList.remove(menu.open);
+            menu.classList.remove(menuStyle.open);
+            menuCenter.classList.remove(menuStyle.disappear);
         } else {
             profile.classList.remove(styles.invisible);
         }

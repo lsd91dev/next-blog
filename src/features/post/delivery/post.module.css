@@ -6,15 +6,22 @@
     cursor:pointer;
     min-height: 600px;
     max-height: 800px;
+    transition: all 500ms;
+}
+
+.post:hover {
+    box-shadow: rgba(0, 0, 0, 0.5) 0 10px 15px -3px, rgba(0, 0, 0, 0.05) 0 4px 6px -2px;
+}
+
+.post:hover > .image::after {
+    background: rgba(0, 0, 0, 0.2);
+    position: absolute;
+    inset: 0;
 }
 
 .post > *  {
     padding-top: var(--xs);
     padding-left: var(--xs);
-}
-
-.post a:first-of-type{
-    font-size: var(--f-xl);
 }
 
 .post > h2 {
@@ -26,8 +33,27 @@
     flex: 0 0 var(--wh-m);
 }
 
+.image::after {
+    content: '';
+    transition: ease-out all 500ms;
+}
+
+
+.link{
+    position:relative;
+    font-size: var(--f-xl);
+}
+
+.link::after {
+    content: '';
+}
+
 .link::first-letter {
     text-transform: uppercase;
+}
+
+.date {
+    color: rgba(0,0,0, 0.6);
 }
 
 .content {
@@ -37,7 +63,7 @@
 
 .content::after {
     content: '';
-    background: linear-gradient(0deg, rgba(255,255,255,1) 25%, rgba(255,255,255,0) 100%);
+    background: linear-gradient(0deg, rgba(255,255,255,1) 20%, rgba(255,255,255,0) 100%);
     position:absolute;
     inset:0;
 }

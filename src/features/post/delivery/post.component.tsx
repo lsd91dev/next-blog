@@ -14,13 +14,18 @@ export const PostComponent: FC<Post> = ({id, title, content, createdAt}): ReactE
         router.push(`/post/${ id }`)
     }
 
+    const nameMonth = (month: number) => {
+        const months = ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December' ]
+        return months[month];
+    }
+
 
     return (
         <article className={styles.post} onClick={ handleClick }>
             <div className={styles.image}>
                 <PostImageComponent fileName={ id } />
             </div>
-            <small> {createdAt.toDateString()}</small>
+            <small className={ styles.date }> { ` ${ nameMonth(createdAt.getMonth() )} ${ createdAt.getDate() } ` }</small>
                 <Link href={`/post/${encodeURIComponent(id)}`}><a className={styles.link}>{title}</a></Link>
             <div className={ styles.content }>
                 { parseStringToHTML(content) }

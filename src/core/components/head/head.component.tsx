@@ -1,4 +1,4 @@
-import {FC, ReactElement} from "react";
+import {FC} from "react";
 import Head from 'next/head';
 
 
@@ -7,7 +7,7 @@ interface Props {
     content: string,
 }
 
-export const HeadComponent: FC<Props> = ({ title, content }) : ReactElement => {
+export const HeadComponent: FC<Props> = ({ title, content }) => {
     return (
         <Head>
             <title>{ title }</title>
