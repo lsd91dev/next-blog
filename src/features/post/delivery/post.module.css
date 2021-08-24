@@ -14,7 +14,7 @@
 }
 
 .post a:first-of-type{
-    font-size: var(--f-l);
+    font-size: var(--f-xl);
 }
 
 .post > h2 {

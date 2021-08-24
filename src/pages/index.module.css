@@ -32,6 +32,10 @@
     cursor: pointer;
 }
 
+.overflowHidden{
+    overflow-y:hidden;
+}
+
 
 
 @media (max-width: 1160px){
